@@ -369,7 +369,7 @@ Autenticação é **provar que você é quem diz ser**. Aqui entram os protocolo
 **O que é:** LDAP (Lightweight Directory Access Protocol) é o protocolo usado pra **consultar e autenticar** num serviço de diretório. O exemplo mais famoso de diretório é o **Active Directory (AD)** da Microsoft. Pense no AD como uma "agenda telefônica gigante" da empresa: usuários, grupos, computadores, impressoras. O LDAP é a língua que você usa pra perguntar coisas pra essa agenda.
 
 - Roda na **porta 389** (texto puro) ou **636** (LDAPS, criptografado com TLS, que é o certo).
-- A estrutura é hierárquica, em árvore, com nomes tipo `cn=Cesar Neto,ou=SOC,dc=credsystem,dc=com,dc=br`:
+- A estrutura é hierárquica, em árvore, com nomes tipo `cn=Cesar Neto,ou=SOC,dc=empresa,dc=com,dc=br`:
   - `cn` = common name (nome do objeto)
   - `ou` = organizational unit (departamento/setor)
   - `dc` = domain component (partes do domínio)
@@ -379,10 +379,10 @@ Autenticação é **provar que você é quem diz ser**. Aqui entram os protocolo
 **Exemplo real - consulta LDAP por linha de comando:**
 ```bash
 # A partir de um Linux, consultando um AD
-# Busca o usuário "cesar" dentro do domínio credsystem.com.br
+# Busca o usuário "cesar" dentro do domínio empresa.com.br
 ldapsearch -x -H ldap://10.0.0.10 \
-  -D "cesar@credsystem.com.br" -W \
-  -b "dc=credsystem,dc=com,dc=br" \
+  -D "cesar@empresa.com.br" -W \
+  -b "dc=empresa,dc=com,dc=br" \
   "(sAMAccountName=cesar)"
 
 # -x  = autenticação simples
